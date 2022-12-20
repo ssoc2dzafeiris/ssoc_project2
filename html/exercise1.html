@@ -1,33 +1,67 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ssoc_project2| Dimitris Zafeiris</title>
-    <link rel="stylesheet" href="css/style.css" />
+    <title>ssoc_project2 | exercise1</title>
+    <link rel="stylesheet" href="../css/style.css" />
 </head>
 <body>
     <div id="container">
         <header>
             <nav>
                 <ul>
-                    <li>Home</li>
-                    <li>Exercise1</li>
-                    <li>Solution</li>
+                    <li><a href="project2.html">Αρχική σελίδα</a></li>
+                    <li>Ασκηση1</li>
+                    <li>Επίλυση</li>
                     <li>My github</li>
                 </ul>
             </nav>
         </header>
-        <div id="Exercise1">
-        <h2>Υπολογισμός Εμβαδού Τριγώνου</h2>
-        <p></p>
+        <div id="main">
+            <div id="Exercise1">
+                <h2>Υπολογισμός Εμβαδού Τριγώνου</h2>
+                <hr/>
+                <br/>
+                <h3> Θεωρία </h3>
+                
+                <p>Το σχήμα του τριγώνου καθορίζεται από τα μήκη των πλευρών και μόνο. <br/>
+                    Το εμβαδόν επίσης μπορεί να υπολογιστεί από τα μήκη των πλευρών από τον τύπο του Ήρωνα:<br/>
+                    <span>At=√s(s−a)(s−b)(s−c)</span> <br/>
+                    όπου s είναι η ημιπερίμετρος (το μισό της περιμέτρου) του τριγώνου και a, b, c, το μήκος των 3 πλευρών του τριγώνου.</p>
+                    <p>Ημιπερίμετρος τριγώνου <br/> (s) = <span>s= (a+b+c)/2
+                        </span></p>
+                </div>
+                <div id="solution">
+                    <div class="row">
+                        <label class="datalabel" for="siteA">Πλευρά τριγώνου α</label>
+                    <input class="datainput" name="siteA" id="siteA" placeholder="Εισάγετε το μηκός της πλευράς α" autocomplete="off" required pattern="[0-9]+"/>
+                    <span class="notification"></span>
+                    </div>
+                    <div class="row">
+                    <label class="datalabel" for="siteB">Πλευρά τριγώνου β</label>
+                    <input class="datainput" id="siteB" placeholder="Εισάγετε το μηκός της πλευράς b" autocomplete="off" required pattern="[0-9]+"/>
+                    <span class="notification"></span>
+                </div>
+                <div class="row">
+                    <label class="datalabel" for="siteC">Πλευρά τριγώνου γ</label>
+                    <input class="datainput" id="siteC" placeholder="Εισάγετε το μηκός της πλευράς c" autocomplete="off" required pattern="[0-9]+"/>
+                    <span class="notification"></span>
+                </div>
+                <div class="row">
+                    <button type="submit" onclick="SurFaceCalculator()">Υπολογισε τώρα εμβαδόν και ημιπερίμετρος τριγώνου</button>
+                </div>
+                    </div>
+                    <div id="results">
+                     <p>Εμβαδόν τριγώνου:<i id="surface"></i></p>
+                     <p>Ημιπερίμετρος τριγώνου:<i id="semiperimeter"></i> </p>
+                    </div>
+                    
+                </div>
+               
+                </div>
+            </div>
         </div>
-        <div id="Solution">
-            
-        </div>
-    </div>
-    
-   
 </body>
 </html>

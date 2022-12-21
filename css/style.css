@@ -1,9 +1,14 @@
+:root {
+    --main-bg-color: #333333;
+    --main-text-color: rgba(255, 255, 255, 0.888);
+    --btn-text-color: white;
+    --hyperlink-text-color: rgb(0, 123, 255);
+  }
+
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    
-    
 }
 
 html,body{
@@ -12,8 +17,8 @@ html,body{
     margin: 0 auto;
     font-size: 1.3rem;
     font-family: "Helvetica Neue",Helvetica,Arial;
-    background: #333333 !important;
-    color: #ffff;
+    background: var(--main-bg-color);   
+    color: var(--main-text-color);
     
 }
 
@@ -28,10 +33,8 @@ p{
     text-align: justify;
 }
 
-container{
-    display: flex !important;
-    align-items: center;
-    justify-content: center;
+#container{
+    height: 90vh;
     
     
 }
@@ -49,8 +52,8 @@ li{
     padding: 15px;
 }
 a{ 
-    color: rgb(0, 123, 255);
-text-decoration: none;
+    color: var(--hyperlink-text-color);
+    text-decoration: none;
 }
 
 a:hover{ 
@@ -117,7 +120,7 @@ input:required + span:after {
 #results{
     width: 45%; 
     margin: 10px 30px;
-    border: 5px solid rgb(20, 204, 36);
+    border: 5px solid rgb(10, 208, 119);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -125,18 +128,21 @@ input:required + span:after {
     border-radius: 20px;
 }
 
-#surface,#semiperemeter{
-    color:rgb(20, 204, 36);
+#surface , #semiperimeter{
+    padding: 5px;
+    border-radius: 20px;
+    color:rgb(10, 208, 119);
     font-weight: 600;
+    background: rgb(55, 51, 51);
 }
 
 .notification{
     text-align: center;
     margin-top: 20px;
-    color: red;
+    color: rgb(249, 83, 0);
     font-weight: normal;
     font-size: 0.75rem;
-    opacity: 0.7;
+    opacity: 0.8;   
 }
 
 .datainput{
@@ -166,5 +172,14 @@ button {
     font-weight:600;
     border-radius:5px;
     width:100%;
+    transition: 200ms;
+    cursor: pointer;
+    font-size: 1.11rem;
   
+  }
+  
+  button:hover{
+    cursor: pointer;
+    transform: translateY(5px); 
+    color: orange;
   }

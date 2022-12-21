@@ -12,16 +12,17 @@
         <header>
             <nav>
                 <ul>
-                    <li><a href="project2.html">Αρχική σελίδα</a></li>
+                    <li><a href="project2.html">🏠Αρχική σελίδα</a></li>
                     <li>Ασκηση1</li>
                     <li>Επίλυση</li>
-                    <li>My github</li>
+                    <li><a href="https://www.helppost.gr/ypologismos-geometria/trigono-embadon-mikos-pleyron/">ℹ️ Πηγή</a></li>
+                    <li><a href="https://github.com/ssoc2dzafeiris">🐱‍👤Github</a></li>
                 </ul>
-            </nav>
+                
         </header>
         <div id="main">
             <div id="Exercise1">
-                <h2>Υπολογισμός Εμβαδού Τριγώνου</h2>
+                <h2>📐 Υπολογισμός Εμβαδού Τριγώνου</h2>
                 <hr/>
                 <br/>
                 <h3> Θεωρία </h3>
@@ -50,7 +51,7 @@
                     <span class="notification"></span>
                 </div>
                 <div class="row">
-                    <button type="submit" onclick="SurFaceCalculator()">Υπολογισε τώρα εμβαδόν και ημιπερίμετρος τριγώνου</button>
+                    <button type="submit" onclick="SurfaceCalculator()">Υπολογισμός</button>
                 </div>
                     </div>
                     <div id="results">
@@ -59,9 +60,26 @@
                     </div>
                     
                 </div>
-               
                 </div>
             </div>
         </div>
+        <script>
+            
+            function SurfaceCalculator () {
+                let a = parseInt (document.getElementById ('siteA').value);
+                let b = parseInt (document.getElementById ('siteB').value);
+                let c = parseInt (document.getElementById ('siteC').value);
+              
+                let s = (a + b + c) / 2;
+                let ginomeno = (s - a) * (s - b) * (s - c);
+              
+                let emvadon = Math.sqrt (s * ginomeno);
+                console.log(emvadon);
+                
+                document.getElementById ('surface').innerHTML = emvadon;
+                document.getElementById ('semiperimeter').innerHTML = s;
+              }
+              
+        </script>
 </body>
 </html>

@@ -58,8 +58,8 @@
                 </div>
                     </div>
                     <div id="results">
-                        <h4 id="success"></h4>
-                     <p><strong>Εμβαδόν τριγώνου:</strong><i id="surface"></i></p>
+                     <h4 id="success"></h4>
+                     <p>Εμβαδόν τριγώνου:<i id="surface"></i></p>
                      <p>Ημιπερίμετρος τριγώνου:<i id="semiperimeter"></i> </p>
                      <small id="timer"></small>
                     </div>
@@ -78,7 +78,6 @@
                 let b = parseInt (document.getElementById ('sideB').value);
                 let c = parseInt (document.getElementById ('sideC').value);
 
-                
                 // έλεγχος αν είναι κένα τα πεδία 
                 CheckNull(a);
                 CheckNull(b);
@@ -95,10 +94,11 @@
                 let se = semiperimeter.toFixed(2);
                 
                 // παρουσίαση των απολετεσμάτων στην ιστοσελίδα μας στις αντίστοιχες θέσεις
-                document.getElementById ('success').innerHTML = `👏​Συγχαρητήρια`;
+                document.getElementById ('success').innerHTML = `👏Συγχαρητήρια`;
                 document.getElementById ('surface').innerHTML = em ;
                 document.getElementById ('semiperimeter').innerHTML = se;
-                //έπειτα από 5 δευτερόλεπτα, θα κάνω reset σε όλα τα ενδιαφερόμενα πεδία για να ξεκινήσω από την αρχή
+
+                //έπειτα από 5 δευτερόλεπτα, θα κάνω reset αυτόματα σε όλα τα ενδιαφερόμενα πεδία για να ξεκινήσω από την αρχή
                 setTimeout(resetFunction, 5000);
               }
 
@@ -111,6 +111,8 @@
                 }
               }
 
+              // Δημιουργία επιπλέον function για την "επαναφορά" στην αρχική μορφή της ιστοσελίδας
+              // Ουσιαστικά θέτονται ολά τα πεδία με το κενό δηλαδή χωρίς τιμή.
               const resetFunction = function ClearFields() {
                 document.getElementById ('sideA').value="";
                 document.getElementById ('sideB').value="";

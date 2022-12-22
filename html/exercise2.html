@@ -16,47 +16,50 @@
                     <li><a href="#description" alt="Περιγραφή" title="Περιγραφή"/><i class="fa-solid fa-info"></i></a></li>
                     <li><a href="#solution" alt="Επίλυση" title="Επίλυση" /><i class="fa-regular fa-lightbulb"></i></a></li>
                     <li><a href="https://github.com/ssoc2dzafeiris" alt="Github" title="Github"><i class="fa-brands fa-github"></i></a></li>
-                    <li><a href="https://www.helppost.gr/ypologismos-geometria/trigono-embadon-mikos-pleyron/" _target="blank" title="Πηγή" alt="Πηγή"><i class="fa-solid fa-scale-balanced"></i></a></li>
+                    <li><a href="https://www.helppost.gr/ypologismos-geometria/kyklos-embadon/" _target="blank" title="Πηγή" alt="Πηγή"><i class="fa-solid fa-scale-balanced"></i></a></li>
                   </ul>
                 
         </header>
         <div id="main">
             <div id="description">
-                <h2>📐 Υπολογισμός Εμβαδού επιφάνειας κύκλου</h2>
+                <h2>2)Υπολογισμός εμβαδού επιφάνειας κύκλου</h2>
                 <hr/>
                 <br/>
-                <h3> <i class="fa-solid fa-book"></i> Θεωρία </h3>
+                <h3>Θεωρία </h3>
                 
-                <p>Το σχήμα του τριγώνου καθορίζεται από τα μήκη των πλευρών και μόνο. <br/>
-                    Το εμβαδόν επίσης μπορεί να υπολογιστεί από τα μήκη των πλευρών από τον τύπο του Ήρωνα:<br/>
-                    <span>At=√s(s−a)(s−b)(s−c)</span> <br/>
+                <p>Κυκλικός δίσκος λέγεται ο κύκλος μαζί με την επιφάνεια που κλείνει μέσα του. Για να βρούμε το εμβαδόν επιφάνειας του κυκλικού δίσκου χρησιμοποιούμε τον μαθηματικό τύπο :<br/>
+                    <span> A=π·r2</span><br/>
+                    Όπου, A (=area) το εμβαδόν του κύκλου,  r  η ακτίνα και π (μαθηματική σταθερά που ορίζεται ως ο λόγος της περιφέρειας προς τη διάμετρο ενός κύκλου και είναι με ακρίβεια οκτώ δεκαδικών ψηφίων ίσος με 3,14159265)<br/>
                     όπου s είναι η ημιπερίμετρος (το μισό της περιμέτρου) του τριγώνου και a, b, c, το μήκος των 3 πλευρών του τριγώνου.</p>
-                    <p>Ημιπερίμετρος τριγώνου <br/> (s) = <span>s= (a+b+c)/2
-                        </span></p>
+                    <ul>
+                        <li>r = η ακτίνα του κύκλου</li>
+                        <li>d = η διάμετρος κύκλου</li>
+                        <li>A = το εμβαδόν του κύκλου</li>
+                        <li>π = pi = 3.14159</li>
+                        <li>√ = τετραγωνική ρίζα</li>
+                    </ul>
+                        </p>
                 </div>
                 <div id="solution">
                     <div class="row">
-                        <label class="datalabel" for="siteA">Πλευρά τριγώνου α</label>
-                    <input class="datainput" name="siteA" id="siteA" placeholder="Εισάγετε το μηκός της πλευράς α" autocomplete="off" required pattern="[0-9]+"/>
-                    <span class="notification"></span>
+                        <label class="datalabel" for="numberPi">Σταθερά π:</label>
+                        <input class="datainput" name="numberPi" id="numberPi" disabled autocomplete="off" value="3,14159"/>
                     </div>
                     <div class="row">
-                    <label class="datalabel" for="siteB">Πλευρά τριγώνου β</label>
-                    <input class="datainput" id="siteB" placeholder="Εισάγετε το μηκός της πλευράς b" autocomplete="off" required pattern="[0-9]+"/>
-                    <span class="notification"></span>
-                </div>
+                        <label class="datalabel" for="radius">Ακτίνα κύκλου (r)</label>
+                        <input class="datainput" id="radius" placeholder="Εισάγετε την ακτινα του κύκλου" autocomplete="off" required pattern="[0-9]+"/>
+                        <span class="notification"></span>
+                    </div>
                 <div class="row">
-                    <label class="datalabel" for="siteC">Πλευρά τριγώνου γ</label>
-                    <input class="datainput" id="siteC" placeholder="Εισάγετε το μηκός της πλευράς c" autocomplete="off" required pattern="[0-9]+"/>
-                    <span class="notification"></span>
-                </div>
-                <div class="row">
-                    <button type="submit" onclick="SurfaceCalculator()">Υπολογισμός</button>
+                    <button type="submit" onclick="CicleCalculator()">Υπολογισμός</button>
+                    <button type="reset" onclick="resetFunction">Καθαρισμός</button>
                 </div>
                     </div>
                     <div id="results">
-                     <p>Εμβαδόν τριγώνου:<i id="surface"></i></p>
-                     <p>Ημιπερίμετρος τριγώνου:<i id="semiperimeter"></i> </p>
+                        <h4 id="success"></h4>
+                        <p>Εμβαδόν κύκλου (Α):<i id="surface"></i></p>
+                        <p>Διάμετρος κύκλου (d):<i id="diameter"></i></p>
+                        
                     </div>
                     
                 </div>
@@ -65,19 +68,43 @@
         </div>
         <script>
             
-            function SurfaceCalculator () {
-                let a = parseInt (document.getElementById ('siteA').value);
-                let b = parseInt (document.getElementById ('siteB').value);
-                let c = parseInt (document.getElementById ('siteC').value);
-              
-                let s = (a + b + c) / 2;
-                let ginomeno = (s - a) * (s - b) * (s - c);
-              
-                let emvadon = Math.sqrt (s * ginomeno);
-                console.log(emvadon);
+            function CicleCalculator() {
+                // αρχικοποιήση των μεταβλητών των πλευρών με τις αντιστοιχές τιμές από τα πεδία εισαγωγής από το χρήστη
+                // αφού μετατρέψω από string μορφή σε int τα δεδομένα.
+                let a = parseInt (document.getElementById ('numberPi').value);
+                let b = parseInt (document.getElementById ('radius').value);
+                // έλεγχος αν είναι κένα τα πεδία 
+                CheckNull(b)
+
                 
-                document.getElementById ('surface').innerHTML = emvadon;
-                document.getElementById ('semiperimeter').innerHTML = s;
+                // υπολογισμός της διαμέτρου κύκλου
+                let diameter = 2*b;
+                // υπολογισμός του εμβαδού κύκλου
+                let surface = a * ( Math.pow(b,2));
+                // στρογγυλοποίηση των αποτελεσμάτων
+                let em = surface.toFixed(2);
+                let dm = diameter.toFixed(2);
+                // παρουσίαση των απολετεσμάτων στην ιστοσελίδα μας στις αντίστοιχες θέσεις
+                document.getElementById ('success').innerHTML = `👏Συγχαρητήρια`;
+                document.getElementById ('surface').innerHTML = em;
+                document.getElementById ('diameter').innerHTML = dm;
+                //έπειτα από 5 δευτερόλεπτα, θα κάνω reset αυτόματα σε όλα τα ενδιαφερόμενα πεδία για να ξεκινήσω από την αρχή
+                setTimeout(resetFunction, 5000);
+              }
+
+              function CheckNull(parametros) {
+                if ((parametros == "") || Number.isNaN(parametros)){
+                   alert("Παρακαλώ σημπληρώστε όλα τα πεδία");
+                   return false;
+                }
+              }
+
+              const resetFunction = function ClearFields() {
+                document.getElementById ('numberPi').value="3.14159";
+                document.getElementById ('radius').value="";
+                document.getElementById ('success').innerHTML ="";
+                document.getElementById ('surface').innerHTML ="";
+                document.getElementById ('diameter').innerHTML ="";
               }
               
         </script>

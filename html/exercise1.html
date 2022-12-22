@@ -53,8 +53,8 @@
                     <span class="notification" id="errorC"></span>
                 </div>
                 <div class="row">
-                    <button type="submit" onclick="SurfaceCalculator()">Υπολογισμός</button>
-                    <button type="reset" onclick="window.location.reload()">Καθαρισμός</button>
+                    <button class="submitBtn" type="submit" onclick="SurfaceCalculator()">Υπολογισμός</button>
+                    <button class="resetBtn" type="reset" onclick="window.location.reload()">Καθαρισμός</button>
                 </div>
                     </div>
                     <div id="results">
@@ -90,7 +90,7 @@
                 // υπολογισμός του εμβαδού του τριγώνου με τον αντιστοιχό μαθηματικό τύπο
                 let ginomeno = (semiperimeter - a) * (semiperimeter - b) * (semiperimeter - c);
                 let emvadon = Math.sqrt (semiperimeter * ginomeno);
-
+                
                 // στρογγυλοποίηση των αποτελεσμάτων
                 let em = emvadon.toFixed(2);
                 let se = semiperimeter.toFixed(2);
@@ -108,7 +108,7 @@
               // Αν τυχόν είναι κενά και να ενημερώνει τον χρήστη για τυχόν μη συμπλήρωση όλων των πεδίων
               function CheckNull(parametros) {
                 if ((parametros == "") || Number.isNaN(parametros)){
-                   alert("Παρακαλώ σημπληρώστε όλα τα πεδία");
+                   alert("Παρακαλώ σημπληρώστε σωστά όλα τα πεδία");
                    return false;
                 }
               }

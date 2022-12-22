@@ -53,8 +53,8 @@
                         <span class="notification" id="error"></span>
                     </div>
                 <div class="row">
-                    <button type="submit" onclick="CicleCalculator()">Υπολογισμός</button>
-                    <button type="reset" onclick="window.location.reload()">Καθαρισμός</button>
+                    <button class="submitBtn" type="submit" onclick="CicleCalculator()">Υπολογισμός</button>
+                    <button class="resetBtn" type="reset" onclick="window.location.reload()">Καθαρισμός</button>
                 </div>
                     </div>
                     <div id="results">
@@ -75,8 +75,6 @@
                 let b = parseFloat( (document.getElementById ('radius').value));
                 // έλεγχος αν είναι κένα τα πεδία 
                 CheckNull(b)
-
-                
                 // υπολογισμός της διαμέτρου κύκλου
                 let diameter = 2*b;
                 // υπολογισμός του εμβαδού κύκλου

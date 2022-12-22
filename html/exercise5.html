@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ssoc_project2 | exercise2</title>
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+</head>
+<body>
+    <div id="container">
+        <header>
+            <nav>
+                <ul>
+                    <li><a href="project2.html" alt="Αρχική σελίδα" title="Αρχική σελίδα"><i class="fa-solid fa-house-chimney icon"></i></a></li>
+                    <li><a href="#description" alt="Περιγραφή" title="Περιγραφή"/><i class="fa-solid fa-info"></i></a></li>
+                    <li><a href="#solution" alt="Επίλυση" title="Επίλυση" /><i class="fa-regular fa-lightbulb"></i></a></li>
+                    <li><a href="https://github.com/ssoc2dzafeiris" alt="Github" title="Github"><i class="fa-brands fa-github"></i></a></li>
+                    <li><a href="https://www.helppost.gr/ypologismos-geometria/orthogonio-trigono-embadon-perimetros/#:~:text=%CE%95%CE%BC%CE%B2%CE%B1%CE%B4%CF%8C%CE%BD%20%CE%B5%CF%80%CE%B9%CF%86%CE%AC%CE%BD%CE%B5%CE%B9%CE%B1%CF%82%20%CE%BF%CF%81%CE%B8%CE%BF%CE%B3%CF%8E%CE%BD%CE%B9%CE%BF%CF%85%20%CF%84%CF%81%CE%B9%CE%B3%CF%8E%CE%BD%CE%BF%CF%85,%CF%84%CE%BF%20%CE%B1%CE%BD%CF%84%CE%AF%CF%83%CF%84%CE%BF%CE%B9%CF%87%CE%BF%20%CF%83%CE%B5%20%CE%B1%CF%85%CF%84%CE%AE%20%CF%8D%CF%88%CE%BF%CF%82." _target="blank" title="Πηγή" alt="Πηγή"><i class="fa-solid fa-scale-balanced"></i></a></li>
+                  </ul>
+                </nav>
+        </header>
+        <div id="main">
+            <div id="description">
+                <h2>5)Υπολογισμός Εμβαδού ορθογωνίου Τριγώνου</h2>
+                <hr/>
+                <br/>
+                <h3>Θεωρία </h3>
+                
+                <p>Το εμβαδόν γενικά ενός τριγώνου είναι ίσο με το μισό του γινομένου μιας πλευράς του με το αντίστοιχο σε αυτή ύψος.<br/>
+
+                    Το εμβαδόν ενός ορθογωνίου τριγώνου είναι ίσο με το μισό του γινομένου των δυο καθέτων πλευρών του<br/>
+                    
+                    Οπότε το εμβαδόν ενός ορθογώνιου τριγώνου δίδεται από τον μαθηματικό τύπο :<br/>
+                    
+                    Ετ = ( a x b ) x  1/2<br/>
+                    όπου a και b το μήκος των κάθετων πλευρών του.
+                        </p>
+                </div>
+                <div id="solution">
+                    <div class="row">
+                        <label class="datalabel" for="sideA">Πλευρα α:</label>
+                        <input class="datainput" id="sideA" placeholder="Εισάγετε το μηκος της α" autocomplete="off" required />
+                        <span class="notification" id="error1"></span>
+                    </div>
+                    <div class="row">
+                        <label class="datalabel" for="sideB">Πλευρα β:</label>
+                        <input class="datainput" id="sideB" placeholder="Εισάγετε το μηκος της β" autocomplete="off" required />
+                        <span class="notification" id="error2"></span>
+                    </div>
+                <div class="row">
+                    <button type="submit" onclick="SurfaceCalculator()">Υπολογισμός</button>
+                    <button type="reset" onclick="window.location.reload()">Καθαρισμός</button>
+                </div>
+                    </div>
+                    <div id="results">
+                        <h4 id="message"></h4>
+                        <p>Εμβαδόν:<i id="surface"></i></p>
+                    </div>
+                    
+                </div>
+            </div>
+        <script>
+            
+            function SurfaceCalculator() {
+                // αρχικοποιήση των μεταβλητών των πλευρών με τις αντιστοιχές τιμές από τα πεδία εισαγωγής από το χρήστη
+                // αφού μετατρέψω από string μορφή σε int τα δεδομένα.
+                let a = parseFloat( (document.getElementById ('sideA').value));
+                let b = parseFloat( (document.getElementById ('sideB').value));
+                // έλεγχος αν είναι κένα τα πεδία 
+                CheckNull(a);
+                CheckNull(b);
+                // υπολογισμός του εμβαδού 
+                let surface =  0.5 * (a * b)
+                
+                if (Number.isNaN(surface))
+                {
+                    document.getElementById ('message').innerHTML = `⚠️Έγινε κάποιο λάθος`;
+                    //έπειτα από 1 δευτερόλεπτo, θα κάνω reset αυτόματα σε όλα τα ενδιαφερόμενα πεδία για να ξεκινήσω από την αρχή
+                    setTimeout(resetFunction, 1000);
+                }else{
+                    // στρογγυλοποίηση των αποτελεσμάτων
+                    let em = surface.toFixed(2);
+                    // παρουσίαση των απολετεσμάτων στην ιστοσελίδα μας στις αντίστοιχες θέσεις
+                    document.getElementById ('message').innerHTML = `👏Συγχαρητήρια`;
+                    document.getElementById ('surface').innerHTML = em;
+                    //έπειτα από 5 δευτερόλεπτα, θα κάνω reset αυτόματα σε όλα τα ενδιαφερόμενα πεδία για να ξεκινήσω από την αρχή
+                    setTimeout(resetFunction, 5000);
+                }
+                
+                
+              }
+
+              function CheckNull(parametros) {
+                if ((parametros == "") || Number.isNaN(parametros)){
+                   alert("Παρακαλώ σημπληρώστε όλα τα πεδία");
+                   return false;
+                }
+              }
+
+              const resetFunction = function ClearFields() 
+              {
+
+                document.getElementById ('sideA').value = "";
+                document.getElementById ('sideB').value = "";
+                document.getElementById ('message').innerHTML = "";
+                document.getElementById ('surface').innerHTML = "";
+               
+              }
+              
+        </script>
+</body>
+</html>

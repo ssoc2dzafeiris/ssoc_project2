@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ssoc_project2 | exercise2</title>
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+</head>
+<body>
+    <div id="container">
+        <header>
+            <nav>
+                <ul>
+                    <li><a href="project2.html" alt="Αρχική σελίδα" title="Αρχική σελίδα"><i class="fa-solid fa-house-chimney icon"></i></a></li>
+                    <li><a href="#description" alt="Περιγραφή" title="Περιγραφή"/><i class="fa-solid fa-info"></i></a></li>
+                    <li><a href="#solution" alt="Επίλυση" title="Επίλυση" /><i class="fa-regular fa-lightbulb"></i></a></li>
+                    <li><a href="https://github.com/ssoc2dzafeiris" alt="Github" title="Github"><i class="fa-brands fa-github"></i></a></li>
+                    <li><a href="https://www.helppost.gr/ypologismos-geometria/romvos-emvadon/" _target="blank" title="Πηγή" alt="Πηγή"><i class="fa-solid fa-scale-balanced"></i></a></li>
+                  </ul>
+                </nav>
+        </header>
+        <div id="main">
+            <div id="description">
+                <h2>6)Υπολογισμός Εμβαδού Ρόμβου</h2>
+                <hr/>
+                <br/>
+                <h3>Θεωρία </h3>
+                
+                <p>Υπολογίστε το εμβαδόν ενός ρόμβου Κ, αν γνωρίζετε το μήκος των διαγωνίων p και q, <br/>χρησιμοποιώντας τον κάτωθι μαθηματικό τύπο :
+                    <br/>K= ( p · q )/2
+                        </p>
+                </div>
+                <div id="solution">
+                    <div class="row">
+                        <label class="datalabel" for="diagonios1">1η διαγώνιος ρόμβου (p):</label>
+                        <input class="datainput" id="diagonios1" placeholder="Εισάγετε το μήκος της πρώτης διαγωνίου" autocomplete="off" required/>
+                        <span class="notification" id="error1"></span>
+                    </div>
+                    <div class="row">
+                        <label class="datalabel" for="diagonios2">2η διαγώνιος ρόμβου (q):</label>
+                        <input class="datainput" id="diagonios2" placeholder="Εισάγετε το μήκος της δευτερης διαγωνίου" autocomplete="off" required />
+                        <span class="notification" id="error2"></span>
+                    </div>
+                    
+                <div class="row">
+                    <button type="submit" onclick="SurfaceCalculator()">Υπολογισμός</button>
+                    <button type="reset" onclick="window.location.reload()">Καθαρισμός</button>
+                </div>
+                    </div>
+                    <div id="results">
+                        <h4 id="message"></h4>
+                        <p>Εμβαδόν ρόμβου (K):<i id="surface"></i></p>
+                    </div>
+                    
+                </div>
+            </div>
+        <script>
+            
+            function SurfaceCalculator() {
+                // αρχικοποιήση των μεταβλητών των πλευρών με τις αντιστοιχές τιμές από τα πεδία εισαγωγής από το χρήστη
+                // αφού μετατρέψω από string μορφή σε int τα δεδομένα.
+                let a = parseFloat( (document.getElementById ('diagonios1').value));
+                let b = parseFloat( (document.getElementById ('diagonios2').value));
+                
+                // έλεγχος αν είναι κένα τα πεδία 
+                CheckNull(a);
+                CheckNull(b);
+                // υπολογισμός του εμβαδού 
+                let surface =   (a * b) / 2;
+                
+                if (Number.isNaN(surface))
+                {
+                    document.getElementById ('message').innerHTML = `⚠️Έγινε κάποιο λάθος`;
+                    //έπειτα από 3 δευτερόλεπτα, θα κάνω reset αυτόματα σε όλα τα ενδιαφερόμενα πεδία για να ξεκινήσω από την αρχή
+                    setTimeout(resetFunction, 3000);
+                }else{
+                    // στρογγυλοποίηση των αποτελεσμάτων
+                    let em = surface.toFixed(3);
+                    // παρουσίαση των απολετεσμάτων στην ιστοσελίδα μας στις αντίστοιχες θέσεις
+                    document.getElementById ('message').innerHTML = `👏Συγχαρητήρια`;
+                    document.getElementById ('surface').innerHTML = em;
+                    //έπειτα από 5 δευτερόλεπτα, θα κάνω reset αυτόματα σε όλα τα ενδιαφερόμενα πεδία για να ξεκινήσω από την αρχή
+                    setTimeout(resetFunction, 5000);
+                }
+                
+                
+              }
+
+              function CheckNull(parametros) {
+                if ((parametros == "") || Number.isNaN(parametros)){
+                   alert("Παρακαλώ σημπληρώστε όλα τα πεδία");
+                   return false;
+                }
+              }
+
+              const resetFunction = function ClearFields() 
+              {
+
+                document.getElementById ('diagonios1').value = "";
+                document.getElementById ('diagonios2').value = "";
+                document.getElementById ('message').innerHTML = "";
+                document.getElementById ('surface').innerHTML = "";
+               
+              }
+              
+        </script>
+</body>
+</html>

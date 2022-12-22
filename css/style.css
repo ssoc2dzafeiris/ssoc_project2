@@ -85,6 +85,7 @@ input,label{
     margin: 10px 5px;
     display: block;
     border: none;
+    text-align: center;
 }
 
 input::placeholder {

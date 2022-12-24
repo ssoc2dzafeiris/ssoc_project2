@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ssoc_project2 | exercise16</title>
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+</head>
+<body>
+    <div id="container">
+        <header>
+            <nav>
+                <ul>
+                    <li><a href="project2.html" alt="Αρχική σελίδα" title="Αρχική σελίδα"><i class="fa-solid fa-house-chimney icon"></i></a></li>
+                    <li><a href="#description" alt="Περιγραφή" title="Περιγραφή"/><i class="fa-solid fa-info"></i></a></li>
+                    <li><a href="#solution" alt="Επίλυση" title="Επίλυση" /><i class="fa-regular fa-lightbulb"></i></a></li>
+                    <li><a href="https://github.com/ssoc2dzafeiris" alt="Github" title="Github"><i class="fa-brands fa-github"></i></a></li>
+                    <li><a href="https://diakathina.com/ogkometrisi-dexamenis-ke-diadikasia-paralavis-petreleou/#:~:text=%CE%9C%CE%B5%CF%84%CF%81%CE%AC%CE%BC%CE%B5%20%CF%84%CE%BF%20%CF%8D%CF%88%CE%BF%CF%82%2C%20%CF%80%CE%BB%CE%AC%CF%84%CE%BF%CF%82%20%CE%BA%CE%B1%CE%B9,X%20%CF%80%CE%BB%CE%AC%CF%84%CE%BF%CF%82%20(%CF%83%CE%B5%20%CE%B5%CE%BA.)"></i></a></li>
+                  </ul>
+                </nav>
+        </header>
+        <div id="main">
+            <div id="description">
+                <h2>16)Υπολογισμός όγκου παραλληλεπίπεδου</h2>
+                <hr/>
+                <br/>
+                <h3>Θεωρία </h3>
+                
+                <p>Ο όγκος της δεξαμενής μετριέται ως εξής :
+                    Μετράμε το ύψος, πλάτος και μήκος της δεξαμενής, σε εκατοστά του μέτρου.
+                    Η χωρητικότητα (όγκος) της δεξαμενής σας (σε λίτρα) είναι Όγκος = μήκος(σε εκ.) X πλάτος (σε εκ.) xύψος (σε εκ.) διαιρούμενο δια 1.000.
+                    Έτσι για παράδειγμα αν μετρήσετε:
+                    
+                    ύψος = 100 εκ.
+                    πλάτος = 100 εκ.
+                    μήκος = 200 εκ.
+                    τότε η χωρητικότητα (όγκος) της δεξαμενής είναι:
+                    Όγκος = (100 x 100 x 200) : 1000 = 2.000 λίτρα
+                        </p>
+                </div>
+                <div id="solution">
+                    <div class="row">
+                        <label class="datalabel" for="numberPi">Σταθερά π:</label>
+                        <input class="datainput" name="numberPi" id="numberPi" disabled autocomplete="off" value="3,14159"/>
+                    </div>
+                    <div class="row">
+                        <label class="datalabel" for="radius">Ακτίνα κύκλου (r)</label>
+                        <input class="datainput" id="radius" placeholder="Εισάγετε την ακτινα του κύκλου" autocomplete="off" required/>
+                        <span class="notification" id="error"></span>
+                    </div>
+                <div class="row">
+                    <button class="submitBtn" type="submit" onclick="CicleCalculator()">Υπολογισμός</button>
+                    <button class="resetBtn" type="reset" onclick="window.location.reload()">Καθαρισμός</button>
+                </div>
+                    </div>
+                    <div id="results">
+                        <h4 id="success"></h4>
+                        <p>Εμβαδόν κύκλου (Α):<i id="surface"></i></p>
+                        <p>Διάμετρος κύκλου (d):<i id="diameter"></i></p>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+        <script>
+            
+            function CicleCalculator() {
+                // αρχικοποιήση των μεταβλητών των πλευρών με τις αντιστοιχές τιμές από τα πεδία εισαγωγής από το χρήστη
+                // αφού μετατρέψω από string μορφή σε int τα δεδομένα.
+                let a = parseFloat( (document.getElementById ('numberPi').value));
+                let b = parseFloat( (document.getElementById ('radius').value));
+                // έλεγχος αν είναι κένα τα πεδία 
+                CheckNull(b)
+                // υπολογισμός της διαμέτρου κύκλου
+                let diameter = 2*b;
+                // υπολογισμός του εμβαδού κύκλου
+                let surface = a * ( Math.pow(b,2));
+                // στρογγυλοποίηση των αποτελεσμάτων
+                if (Number.isNaN(surface) && Number.isNaN(diameter))
+                {
+                    document.getElementById ('success').innerHTML = `⚠️Έγινε κάποιο λάθος`;
+                    document.getElementById ('error').innerHTML = ` Υποχρεωτικό πεδιο `;
+                    //έπειτα από 3 δευτερόλεπτα, θα κάνω reset αυτόματα σε όλα τα ενδιαφερόμενα πεδία για να ξεκινήσω από την αρχή
+                    setTimeout(resetFunction, 3000);
+                }else{
+                    let em = surface.toFixed(2);
+                    let dm = diameter.toFixed(2);
+                    // παρουσίαση των απολετεσμάτων στην ιστοσελίδα μας στις αντίστοιχες θέσεις
+                    document.getElementById ('success').innerHTML = `👏Συγχαρητήρια`;
+                    document.getElementById ('surface').innerHTML = em;
+                    document.getElementById ('diameter').innerHTML = dm;
+                    //έπειτα από 5 δευτερόλεπτα, θα κάνω reset αυτόματα σε όλα τα ενδιαφερόμενα πεδία για να ξεκινήσω από την αρχή
+                    setTimeout(resetFunction, 5000);
+                }
+                
+                
+              }
+
+              function CheckNull(parametros) {
+                if ((parametros == "") || Number.isNaN(parametros)){
+                   alert("Παρακαλώ σημπληρώστε όλα τα πεδία");
+                   return false;
+                }
+              }
+
+              const resetFunction = function ClearFields() {
+                document.getElementById ('numberPi').value="3.14159";
+                document.getElementById ('radius').value="";
+                document.getElementById ('success').innerHTML ="";
+                document.getElementById ('surface').innerHTML ="";
+                document.getElementById ('diameter').innerHTML ="";
+                document.getElementById ('error').innerHTML = "";
+              }
+              
+        </script>
+</body>
+</html>

@@ -14,7 +14,7 @@
 }
 
 html,body{
-
+    min-height: 100vh;
     width: 100%;
     margin: 0 auto;
     font-size: 1.3rem;
@@ -23,15 +23,14 @@ html,body{
     color: var(--main-text-color);
 }
 
-
-
 div{
     margin: 20px;
 }
+
 p{
     font-size: smaller;
     font-weight: lighter;
-    margin: 15px !important;
+    margin: 20px !important;
     padding: 5px;
     text-align: justify;
 }
@@ -54,7 +53,7 @@ ul{
 }
 li a {
     display: block;
-    color: white;
+    color: var(--btn-text-color);
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
@@ -74,8 +73,8 @@ a:hover{
 
 
 table,tr,td{
-    margin: 0 auto;
-    border-top: 1px solid #eee;
+    margin: 5px auto;
+    border-top: 1px solid var(--btn-text-color);
     padding: 10px 20px;
     text-align: center;
     font-size: smaller;
@@ -83,10 +82,14 @@ table,tr,td{
 }
 
 footer{
-    bottom: 0;
-    width: 100%;
-    text-align: center;
-    font-size: 1.11rem;
+  display: block;
+  position: fixed;
+  bottom: 0px;
+  height: 30px;
+  width: 100%;
+  background:#999;
+  opacity: 0.6;
+  text-align: center;
 }
 
 input,label{
@@ -102,33 +105,47 @@ input::placeholder {
     text-align: center;
     font-weight: 700;
     color: rgb(98, 98, 98);
-    opacity: 0.9;
+    opacity: 1;
   }
 
   input[type="number"]:focus{
     outline: none;
+    border: 5px solid var(--hyperlink-text-color);
   }
-input:required + span:after {
+  input:required + span:after , input:invalid + span:after {
     content: "*";
   }
 
   input:required:valid {
-    border-color: var(--green-success-color);
+    border: 5px solid var(--green-success-color);
     background:var(--green-success-color);
   }
 
   input:invalid {
-    border-color: red;
+    border: 2px solid red;
     color: red;
-    opacity: 0.7;
+    opacity: 0.9;
   }
+
+  input:valid + span:after{ 
+    content: 'Σωστά🙂';
+    color: var(--green-success-color); 
+    position: relative;
+  }
+
   input:required:focus:valid {
     background: url("https://assets.digitalocean.com/labs/icons/hand-thumbs-up.svg") no-repeat 95% 50% var(--green-success-color);
     background-size: 25px;
+    border: 5px solid var(--green-success-color);
+
   }
+
+
   input:focus:invalid {
-    background: url("https://assets.digitalocean.com/labs/icons/exclamation-triangle-fill.svg") no-repeat 95% 50% var(--icon-hover-color);
+    background: url("https://assets.digitalocean.com/labs/icons/exclamation-triangle-fill.svg") no-repeat 95% 50% rgb(255, 215, 215);;
     background-size: 25px;
+    border: 5px solid red;
+
   }
 
 #main{
@@ -146,7 +163,7 @@ input:required + span:after {
     align-items: center;
     justify-content: center;
     border-radius: 20px;
-    background-color: #333333;
+    background-color: #0a2351;
 background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%23fbfbfe' fill-opacity='0.1'%3E%3Cpath opacity='.5' d='M96 95h4v1h-4v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9zm-1 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9z'/%3E%3Cpath d='M6 5V0H5v5H0v1h5v94h1V6h94V5H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
     
 }
@@ -204,21 +221,23 @@ button {
   
     /* usual styles */
     padding: 20px;
-    margin: 10px;
-    border:none;
+    margin: 10px 15px;
+    border: none;
     background-color: var(--hyperlink-text-color);
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
     color:rgb(98, 98, 98);
     font-weight: 300;
-    border-radius: 25px;
+    border-radius: 20px;
     width: 50%;
     transition: 200ms;
     cursor: pointer;
-    font-size: 1rem;
+    font-size: 0.89rem;
+    outline: none;
   }
   
   button:hover{
-    transform: translateY(5px); 
     background-color: var(--icon-hover-color);
+    transform: translateY(-7px);
   }
 
   button:disabled,
@@ -239,7 +258,7 @@ button {
   i:hover{
     
     transform: translateY(5px); 
-    color: rgb(255, 248, 105);
+    color: var(--icon-hover-color);
     opacity: 1;
   }
 
@@ -250,23 +269,25 @@ button {
   }
 
   .resetBtn{
+    z-index: 0;
     -webkit-appearance: button;
     background: red;
     color: white;
   }
 
   .resetBtn:hover{
-    -webkit-appearance: button;
-    background: rgb(253, 118, 118);
+    z-index: 1000;
+    background: rgb(199, 81, 81);
     color: black;
   }
 
   .submitBtn{
-    background: var(--hyperlink-text-color);
+    background: #3457D5;
     color: white;
   }
 
   .submitBtn:hover{
+    z-index: 1000;
     color: black;
     background-color: var(--green-success-color);
   }

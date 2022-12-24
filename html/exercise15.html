@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ssoc_project2 | exercise15</title>
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+</head>
+<body>
+    <div id="container">
+        <header>
+            <nav>
+                <ul>
+                    <li><a href="project2.html" alt="Αρχική σελίδα" title="Αρχική σελίδα"><i class="fa-solid fa-house-chimney icon"></i></a></li>
+                    <li><a href="#description" alt="Περιγραφή" title="Περιγραφή"/><i class="fa-solid fa-info"></i></a></li>
+                    <li><a href="#solution" alt="Επίλυση" title="Επίλυση" /><i class="fa-regular fa-lightbulb"></i></a></li>
+                    <li><a href="https://github.com/ssoc2dzafeiris" alt="Github" title="Github"><i class="fa-brands fa-github"></i></a></li>
+                    <li><a href="https://www.helppost.gr/ypologismos-geometria/orthogonio-parallilepipedo-ogkos/#:~:text=%CE%9F%20%CF%8C%CE%B3%CE%BA%CE%BF%CF%82%20%CE%B5%CE%BD%CF%8C%CF%82%20%CE%BF%CF%81%CE%B8%CE%BF%CE%B3%CF%89%CE%BD%CE%AF%CE%BF%CF%85%20%CF%80%CE%B1%CF%81%CE%B1%CE%BB%CE%BB%CE%B7%CE%BB%CE%B5%CF%80%CE%B9%CF%80%CE%AD%CE%B4%CE%BF%CF%85,%CF%8D%CF%88%CE%BF%CF%82%20%CF%84%CE%BF%CF%85%20(%CF%83%CF%87%CE%AE%CE%BC%CE%B1%201)." _target="blank" title="Πηγή" alt="Πηγή"><i class="fa-solid fa-scale-balanced"></i></a></li>
+                  </ul>
+                </nav>
+        </header>
+        <div id="main">
+            <div id="description">
+                <h2>15)Υπολογισμός όγκου παραλληλεπίπεδου</h2>
+                <hr/>
+                <br/>
+                <h3>Θεωρία </h3>
+                
+                <p>Ο όγκος ενός ορθογωνίου παραλληλεπιπέδου είναι ίσος με το γινόμενο του μήκους επί το πλάτος επί το ύψος του.<br/>
+
+                    Vόγκος = a x b x c
+                        </p>
+                </div>
+                <div id="solution">
+                    <div class="row">
+                        <label class="datalabel" for="numberPi">Σταθερά π:</label>
+                        <input class="datainput" name="numberPi" id="numberPi" disabled autocomplete="off" value="3,14159"/>
+                    </div>
+                    <div class="row">
+                        <label class="datalabel" for="radius">Ακτίνα κύκλου (r)</label>
+                        <input class="datainput" id="radius" placeholder="Εισάγετε την ακτινα του κύκλου" autocomplete="off" required/>
+                        <span class="notification" id="error"></span>
+                    </div>
+                <div class="row">
+                    <button class="submitBtn" type="submit" onclick="CicleCalculator()">Υπολογισμός</button>
+                    <button class="resetBtn" type="reset" onclick="window.location.reload()">Καθαρισμός</button>
+                </div>
+                    </div>
+                    <div id="results">
+                        <h4 id="success"></h4>
+                        <p>Εμβαδόν κύκλου (Α):<i id="surface"></i></p>
+                        <p>Διάμετρος κύκλου (d):<i id="diameter"></i></p>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+        <script>
+            
+            function CicleCalculator() {
+                // αρχικοποιήση των μεταβλητών των πλευρών με τις αντιστοιχές τιμές από τα πεδία εισαγωγής από το χρήστη
+                // αφού μετατρέψω από string μορφή σε int τα δεδομένα.
+                let a = parseFloat( (document.getElementById ('numberPi').value));
+                let b = parseFloat( (document.getElementById ('radius').value));
+                // έλεγχος αν είναι κένα τα πεδία 
+                CheckNull(b)
+                // υπολογισμός της διαμέτρου κύκλου
+                let diameter = 2*b;
+                // υπολογισμός του εμβαδού κύκλου
+                let surface = a * ( Math.pow(b,2));
+                // στρογγυλοποίηση των αποτελεσμάτων
+                if (Number.isNaN(surface) && Number.isNaN(diameter))
+                {
+                    document.getElementById ('success').innerHTML = `⚠️Έγινε κάποιο λάθος`;
+                    document.getElementById ('error').innerHTML = ` Υποχρεωτικό πεδιο `;
+                    //έπειτα από 3 δευτερόλεπτα, θα κάνω reset αυτόματα σε όλα τα ενδιαφερόμενα πεδία για να ξεκινήσω από την αρχή
+                    setTimeout(resetFunction, 3000);
+                }else{
+                    let em = surface.toFixed(2);
+                    let dm = diameter.toFixed(2);
+                    // παρουσίαση των απολετεσμάτων στην ιστοσελίδα μας στις αντίστοιχες θέσεις
+                    document.getElementById ('success').innerHTML = `👏Συγχαρητήρια`;
+                    document.getElementById ('surface').innerHTML = em;
+                    document.getElementById ('diameter').innerHTML = dm;
+                    //έπειτα από 5 δευτερόλεπτα, θα κάνω reset αυτόματα σε όλα τα ενδιαφερόμενα πεδία για να ξεκινήσω από την αρχή
+                    setTimeout(resetFunction, 5000);
+                }
+                
+                
+              }
+
+              function CheckNull(parametros) {
+                if ((parametros == "") || Number.isNaN(parametros)){
+                   alert("Παρακαλώ σημπληρώστε όλα τα πεδία");
+                   return false;
+                }
+              }
+
+              const resetFunction = function ClearFields() {
+                document.getElementById ('numberPi').value="3.14159";
+                document.getElementById ('radius').value="";
+                document.getElementById ('success').innerHTML ="";
+                document.getElementById ('surface').innerHTML ="";
+                document.getElementById ('diameter').innerHTML ="";
+                document.getElementById ('error').innerHTML = "";
+              }
+              
+        </script>
+</body>
+</html>

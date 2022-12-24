@@ -4,7 +4,7 @@
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ssoc_project2 | exercise15</title>
+    <title>ssoc_project2 | exercise22</title>
     <link rel="stylesheet" href="../css/style.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
@@ -18,76 +18,76 @@
                     <li><a href="#description" alt="Περιγραφή" title="Περιγραφή"/><i class="fa-solid fa-info"></i></a></li>
                     <li><a href="#solution" alt="Επίλυση" title="Επίλυση" /><i class="fa-regular fa-lightbulb"></i></a></li>
                     <li><a href="https://github.com/ssoc2dzafeiris" alt="Github" title="Github"><i class="fa-brands fa-github"></i></a></li>
-                    <li><a href="https://www.helppost.gr/ypologismos-geometria/orthogonio-parallilepipedo-ogkos/#:~:text=%CE%9F%20%CF%8C%CE%B3%CE%BA%CE%BF%CF%82%20%CE%B5%CE%BD%CF%8C%CF%82%20%CE%BF%CF%81%CE%B8%CE%BF%CE%B3%CF%89%CE%BD%CE%AF%CE%BF%CF%85%20%CF%80%CE%B1%CF%81%CE%B1%CE%BB%CE%BB%CE%B7%CE%BB%CE%B5%CF%80%CE%B9%CF%80%CE%AD%CE%B4%CE%BF%CF%85,%CF%8D%CF%88%CE%BF%CF%82%20%CF%84%CE%BF%CF%85%20(%CF%83%CF%87%CE%AE%CE%BC%CE%B1%201)." _target="blank" title="Πηγή" alt="Πηγή"><i class="fa-solid fa-scale-balanced"></i></a></li>
+                    <li><a href="https://www.helppost.gr/ypologismos/pososta-tois-ekato/"></i></a></li>
                   </ul>
                 </nav>
         </header>
         <div id="main">
             <div id="description">
-                <h2>15)Υπολογισμός όγκου παραλληλεπίπεδου</h2>
+                <h2>22)Υπολογισμός ποσοστών</h2>
                 <hr/>
                 <br/>
                 <h3>Θεωρία </h3>
                 
-                <p>Ο όγκος ενός ορθογωνίου παραλληλεπιπέδου είναι ίσος με το γινόμενο του μήκους επί το πλάτος επί το ύψος του.<br/>
-
-                    V όγκος = a x b x c
+                <p>Για να βρω ένα ποσοστό (%), χρησιμοποιώ έναν από τους τρόπους <br/>
+                    <ol>
+                        <li>1ος τρόπος:  
+                            Βρίσκω (αν δεν ξέρω ήδη) την αρχική τιμή και τη διαφορά (αύξηση ή μείωση) της αρχικής από την τελική τιμή.<br/>
+                            Το ποσοστό είναι ίσο με το πηλίκο της διαφοράς προς την αρχική τιμή.<br/>
+                            Ποσοστό = Διαφορά (Αρχικής – Τελικής) / Αρχική τιμή</li>
+                            <li>2ος τρόπος: Σχηματίζω πίνακα ποσών και τιμών (αναλογία).</li>
+                            <li>3ος τρόπος:  Με απλή μέθοδο των τριών.</li>
+                    </ol>
                         </p>
                 </div>
                 <div id="solution">
                     <div class="row">
-                        <label class="datalabel" for="numberA">Βάση - πλάτος (a):</label>
-                        <input type="number" class="datainput" name="numberA" id="numberA" autocomplete="off" placeholder="πχ 2" required   />
-                        <span class="notification" id="errorA"></span>
+                        <label class="datalabel" for="perA">Το ποσοστό:</label>
+                        <input type="number" step="0.01" class="datainput" name="perA" id="perA" autocomplete="off" required placeholder="πχ 10,00%"/>
+                        <span class="notification" id="error"></span>
                     </div>
                     <div class="row">
-                        <label class="datalabel" for="numberC">Βάση - μήκος (c)</label>
-                        <input type="number" class="datainput" id="numberC"  autocomplete="off" placeholder="πχ 2" required />
-                        <span class="notification" id="errorC"></span>
-                    </div>
-                    <div class="row">
-                        <label class="datalabel" for="numberB">Ύψος (b)</label>
-                        <input type="number" class="datainput" id="numberB" placeholder="πχ 1.5" autocomplete="off" required/>
-                        <span class="notification" id="errorB"></span>
+                        <label class="datalabel" for="numberA">του αριθμού</label>
+                        <input type="number" step="0.01" class="datainput" id="numberA"  autocomplete="off" required placeholder="πχ 100"/>
+                        <span class="notification" id="errorΑ"></span>
                     </div>
                 <div class="row">
-                    <button class="submitBtn" type="submit" onclick="VolumeCalculator()">Υπολογισμός</button>
+                    <button class="submitBtn" type="submit" onclick="PercentegeCalculator()">Υπολογισμός</button>
                     <button class="resetBtn" type="reset" onclick="window.location.reload()">Καθαρισμός</button>
                 </div>
                     </div>
                     <div id="results">
                         <h4 id="success"></h4>
-                        <p>Όγκος (V):<i id="volume"></i></p>
-                        
+                        <p>είναι:<i id="percent"></i></p>                        
                     </div>
                     
                 </div>
             </div>
         <script>
             
-            function VolumeCalculator() {
+            function PercentegeCalculator() {
                 // αρχικοποιήση των μεταβλητών των πλευρών με τις αντιστοιχές τιμές από τα πεδία εισαγωγής από το χρήστη
                 // αφού μετατρέψω από string μορφή σε int τα δεδομένα.
-                let a = parseFloat( (document.getElementById ('numberA').value));
-                let c = parseFloat( (document.getElementById ('numberC').value));
-                let b = parseFloat( (document.getElementById ('numberB').value));
+                let percentToGet  = parseFloat( (document.getElementById ('perA').value));
+                let number = parseFloat( (document.getElementById ('numberA').value));
                 // έλεγχος αν είναι κένα τα πεδία 
-                CheckNull(a);
-                CheckNull(c);
-                CheckNull(b);
-                // υπολογισμός του εμβαδού κύκλου
-                let volume = (a*b) * c;
+                CheckNull(percentToGet);
+                CheckNull(number);
+                // υπολογισμός της διαμέτρου κύκλου
+                let result = (percentToGet / 100) * number;
                 // στρογγυλοποίηση των αποτελεσμάτων
-                if (Number.isNaN(volume))
+                if (Number.isNaN(perA) && Number.isNaN(numberA))
                 {
                     document.getElementById ('success').innerHTML = `⚠️Έγινε κάποιο λάθος`;
+                    document.getElementById ('error').innerHTML = ` Υποχρεωτικό πεδιο `;
                     //έπειτα από 3 δευτερόλεπτα, θα κάνω reset αυτόματα σε όλα τα ενδιαφερόμενα πεδία για να ξεκινήσω από την αρχή
                     setTimeout(resetFunction, 3000);
                 }else{
-                    let vol = volume.toFixed(2);
+                    result= result.toFixed(2);
                     // παρουσίαση των απολετεσμάτων στην ιστοσελίδα μας στις αντίστοιχες θέσεις
                     document.getElementById ('success').innerHTML = `👏Συγχαρητήρια`;
-                    document.getElementById ('volume').innerHTML = vol;
+                    document.getElementById ('percent').innerHTML = result + `%`;
+                    
                     //έπειτα από 5 δευτερόλεπτα, θα κάνω reset αυτόματα σε όλα τα ενδιαφερόμενα πεδία για να ξεκινήσω από την αρχή
                     setTimeout(resetFunction, 5000);
                 }

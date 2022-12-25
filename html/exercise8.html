@@ -4,7 +4,7 @@
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ssoc_project2 | exercise9</title>
+    <title>ssoc_project2 | exercise8</title>
     <link rel="stylesheet" href="../css/style.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
@@ -18,91 +18,80 @@
                     <li><a href="#description" alt="Περιγραφή" title="Περιγραφή"/><i class="fa-solid fa-info"></i></a></li>
                     <li><a href="#solution" alt="Επίλυση" title="Επίλυση" /><i class="fa-regular fa-lightbulb"></i></a></li>
                     <li><a href="https://github.com/ssoc2dzafeiris" alt="Github" title="Github"><i class="fa-brands fa-github"></i></a></li>
-                    <li><a href="https://www.calcfun.eu/calc-35-epilysi-exisosis-2ou-vathmou-deyterovathmia.html" _target="blank" title="Πηγή" alt="Πηγή"><i class="fa-solid fa-scale-balanced"></i></a></li>
+                    <li><a href="https://www.ypologismos.gr/apostasi-simeion-dyo-diastaseis-kartesiano-epipedo/" _target="blank" title="Πηγή" alt="Πηγή"><i class="fa-solid fa-scale-balanced"></i></a></li>
                   </ul>
                 </nav>
         </header>
         <div id="main">
             <div id="description">
-                <h2>9) Υπολογισμός διακρίνουσας</h2>
+                <h2>8)Υπολογισμός απόστασης δύο σημείων στο καρτεσιανό επίπεδο (2 διαστάσεις)</h2>
                 <hr/>
                 <br/>
-                <h3> Θεωρία </h3>
+                <h3>Θεωρία </h3>
                 
-                <p style="width: 100%;">Έστω η δευτεροβάθμια εξίσωση :/<br/>
+                <p>Έστω Oxy ένα σύστημα συντεταγμένων στο επίπεδο και Α(x1,y1) και Β(x2,y2) δύο σημεία αυτού. Η απόστασή τους δίνεται από τον μαθηματικό  τύπο:
 
-                    α‧x2+β‧x+γ=0<br/>
-                    Υπολογίζουμε την διακρίνουσα Δ :<br/>
-                    Δ=β2-4‧α‧γ<br/>
-                    Λύσεις της εξίσωσης :<br/>
-                    Εάν Δ>0 ⇒ X1,2 <br/>
-                    -β ± √Δ<br/>
-                    2α<br/>
-                    H εξίσωση έχει 2 ρίζες (λύσεις) Χ1,2<br/>
-                    α‧x2+β‧x+γ=0 ⇔ α‧(x-x1)‧(x-x2)<br/>
-                    Εάν Δ=0 ⇒ X1,2=<br/>
-                    -β<br/>
-                    2α<br/>
-                    H εξίσωση έχει 1 διπλή ρίζα (λύση) Χ1,2<br/>
-                    α‧x2+β‧x+γ=0 ⇔ α‧(x-x1)2<br/>
-                    Εάν Δ< 0 ⇒ Δεν υπάρχουν πραγματικές ρίζες (∈ R)<br/>
+                    AB=√(x2−x1)2+(y2−y1)2
                         </p>
                 </div>
                 <div id="solution">
                     <div class="row">
-                        <label class="datalabel" for="numberA">Συντελεστής α:</label>
-                        <input type="number" class="datainput" id="numberA" name="numberA" placeholder="a" autocomplete="off" required/>
-                        <span class="notification" id="errorΑ"></span>
+                        <label class="datalabel" for="numberX1">X1:</label>
+                        <input type="number" class="datainput" id="numberX1" placeholder="....." autocomplete="off" required/>
+                        <span class="notification" id="errorX1"></span>
                     </div>
                     <div class="row">
-                        <label class="datalabel" for="numberB">Συντελεστής β:</label>
-                        <input type="number" class="datainput" id="numberB" placeholder="b" autocomplete="off" required />
-                        <span class="notification" id="errorB"></span>
+                        <label class="datalabel" for="numberX2">X2:</label>
+                        <input type="number" class="datainput" id="diagonios2" placeholder="....." autocomplete="off" required />
+                        <span class="notification" id="errorX2"></span>
                     </div>
                     <div class="row">
-                        <label class="datalabel" for="numberC">Συντελεστής c:</label>
-                        <input type="number" class="datainput" id="numberC" placeholder="c" autocomplete="off" required />
-                        <span class="notification" id="errorC"></span>
+                        <label class="datalabel" for="numberY1">Y1:</label>
+                        <input type="number" class="datainput" id="numberY1" placeholder="....." autocomplete="off" required/>
+                        <span class="notification" id="errorY1"></span>
+                    </div>
+                    <div class="row">
+                        <label class="datalabel" for="numberY2">Y2:</label>
+                        <input type="number" class="datainput" id="diagonios2" placeholder="......." autocomplete="off" required />
+                        <span class="notification" id="errorY2"></span>
                     </div>
                 <div class="row">
-                    <button class="submitBtn" type="submit" onclick="DiscriminantCalculator()">Υπολογισμός</button>
+                    <button class="submitBtn" type="submit" onclick="DistanceCalculator()">Υπολογισμός</button>
                     <button class="resetBtn" type="reset" onclick="window.location.reload()">Καθαρισμός</button>
                 </div>
                     </div>
                     <div id="results">
                         <h4 id="message"></h4>
-                        <p>Διακρινουσα (Δ):<i id="discriminant"></i></p>
+                        <p>Εμβαδόν ρόμβου (K):<i id="surface"></i></p>
                     </div>
                     
                 </div>
             </div>
         <script>
             
-            function DiscriminantCalculator() {
+            function DistanceCalculator() {
                 // αρχικοποιήση των μεταβλητών των πλευρών με τις αντιστοιχές τιμές από τα πεδία εισαγωγής από το χρήστη
                 // αφού μετατρέψω από string μορφή σε int τα δεδομένα.
-                let a = parseFloat( (document.getElementById ('numberA').value));
-                let b = parseFloat( (document.getElementById ('numberB').value));
-                let c = parseFloat( (document.getElementById ('numberC').value));
+                let a = parseFloat( (document.getElementById ('diagonios1').value));
+                let b = parseFloat( (document.getElementById ('diagonios2').value));
                 
                 // έλεγχος αν είναι κένα τα πεδία 
                 CheckNull(a);
                 CheckNull(b);
-                CheckNull(c);
                 // υπολογισμός του εμβαδού 
-                let discriminant =   Math.pow(b,2) - 4*(a*c);
-        
-                if (Number.isNaN(discriminant))
+                let surface =   (a * b) / 2;
+                
+                if (Number.isNaN(surface))
                 {
                     document.getElementById ('message').innerHTML = `⚠️Έγινε κάποιο λάθος`;
                     //έπειτα από 3 δευτερόλεπτα, θα κάνω reset αυτόματα σε όλα τα ενδιαφερόμενα πεδία για να ξεκινήσω από την αρχή
                     setTimeout(resetFunction, 3000);
                 }else{
                     // στρογγυλοποίηση των αποτελεσμάτων
-                    let dis = discriminant.toFixed(3);
+                    let em = surface.toFixed(3);
                     // παρουσίαση των απολετεσμάτων στην ιστοσελίδα μας στις αντίστοιχες θέσεις
                     document.getElementById ('message').innerHTML = `👏Συγχαρητήρια`;
-                    document.getElementById ('discriminant').innerHTML = dis;
+                    document.getElementById ('surface').innerHTML = em;
                     //έπειτα από 5 δευτερόλεπτα, θα κάνω reset αυτόματα σε όλα τα ενδιαφερόμενα πεδία για να ξεκινήσω από την αρχή
                     setTimeout(resetFunction, 5000);
                 }
@@ -119,11 +108,11 @@
 
               const resetFunction = function ClearFields() 
               {
-                document.getElementById ('numberA').value = "";
-                document.getElementById ('numberΒ').value = "";
-                document.getElementById ('numberC').value = "";
+
+                document.getElementById ('diagonios1').value = "";
+                document.getElementById ('diagonios2').value = "";
                 document.getElementById ('message').innerHTML = "";
-                document.getElementById ('discriminant').innerHTML = "";
+                document.getElementById ('surface').innerHTML = "";
                
               }
               

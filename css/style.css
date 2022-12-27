@@ -319,6 +319,6 @@ button {
 
   .submitBtn:hover{
     z-index: 1000;
-    color: black;
+    color: var(--main-bg-color);
     background-color: var(--green-success-color);
   }

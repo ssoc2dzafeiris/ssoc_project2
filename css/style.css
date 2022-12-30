@@ -11,7 +11,8 @@
     --grey-color: #999;
   }
 
-
+  *::before,
+  *::after 
 *{
     margin: 0;
     padding: 0;
@@ -301,7 +302,6 @@ button {
 
   .resetBtn{
     z-index: 0;
-    -webkit-appearance: button;
     background: var(--alert-color);
     color: var(--main-text-color);
   }
@@ -321,4 +321,15 @@ button {
     z-index: 1000;
     color: var(--main-bg-color);
     background-color: var(--green-success-color);
+  }
+
+  select {
+    border: none;
+    padding: 0 1em 0 0;
+    margin: 30px;
+    width: 100%;
+    height: 25%;
+    border-radius: 15px;
+    text-align: center;
+    
   }

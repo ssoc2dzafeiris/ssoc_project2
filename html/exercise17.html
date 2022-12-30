@@ -29,98 +29,150 @@
         </header>
         <div id="main">
             <div id="description">
-                <h2>17)Μετατροπές μονάδων μέτρησης απόστασης nm, μm, mm, cm, m, kmκ.α.</h2>
-                <hr/>
-                <br/>
-                <h3>Θεωρία </h3>
-                
-                <p><ol>
-                    <li>Ιντσες (in) σε Εκατοστά (cm) 2.54</li>
-                    <li>Εκατοστά σε Ιντσες 0.39</li>
-                    <li>Ιντσες σε Χιλιοστά (mm) 25.40</li>
-                    <li>Χιλιοστά σε Ιντσες 0.04</li>
-                    <li>Πόδια (ft) σε Μέτρα (m) 0.31</li>
-                    <li>Μέτρα σε Πόδια 3.28</li>
-                    <li>Γιάρδες (yd) σε Μέτρα 0.91</li>
-                    <li>Μέτρα σε Γιάρδες 1.09</li>
-                    <li>Μίλια (mi) σε Χιλιόμετρα (km) 1.61</li>
-                    <li>Χιλιόμετρα σε Μίλια 0.62</li>
-                </ol>
-                        </p>
+                <h2>17)Μετατροπές μονάδων μέτρησης απόστασης nm, μm, mm, cm, m, km κ.α.</h2>
+                <p> Μετατροπή σε μέτρα</p>
                 </div>
                 <div id="solution">
                     <div class="row">
-                        <label class="datalabel" for="numberPi">Σταθερά π:</label>
-                        <input class="datainput" name="numberPi" id="numberPi" disabled autocomplete="off" value="3,14159"/>
+                        <label class="datalabel" for="amount">Ορίστε έναν αριθμό:</label>
+                        <input type="number" class="datainput" name="amount" id="amount" autocomplete="off" placeholder="πληκτρολογήστε εδώ" required step="0.01"/>
                     </div>
                     <div class="row">
-                        <label class="datalabel" for="radius">Ακτίνα κύκλου (r)</label>
-                        <input class="datainput" id="radius" placeholder="Εισάγετε την ακτινα του κύκλου" autocomplete="off" required/>
+                        <label for="prices">Επιλέξτε την μονάδα μέτρησης:</label>
+                        <select name="prices" id="prices" required >
+                            <option value="0" disabled >Καμμία επιλογή</option>
+                            <option value="1">Νανόμετρα (nm)</option>
+                            <option value="2">Μικρόμετρα (μm)</option>
+                            <option value="3">Χιλιοστόμετρα (mm)</option>
+                            <option value="4">Εκατοστά (cm)</option>
+                            <option value="5">Χιλιόμετρα (km)</option>
+                            <option value="6">Ινσες(inch)</option>
+                            <option value="7">Γιαρδες()</option>
+                            <option value="8">Πόδια()</option>
+                          </select>
                         <span class="notification" id="error"></span>
                     </div>
                 <div class="row">
-                    <button class="submitBtn" type="submit" onclick="CicleCalculator()">Υπολογισμός</button>
+                    <button class="submitBtn" type="submit" onclick="meterCalculator()">Υπολογισμός</button>
                     <button class="resetBtn" type="reset" onclick="window.location.reload()">Καθαρισμός</button>
                 </div>
                     </div>
                     <div id="results">
                         <h4 id="success"></h4>
-                        <p>Εμβαδόν κύκλου (Α):<i id="surface"></i></p>
-                        <p>Διάμετρος κύκλου (d):<i id="diameter"></i></p>
-                        
+                        <p>Μετρατροπή σε μέτρα:<i id="result"></i></p>
                     </div>
                     
                 </div>
             </div>
         <script>
             
-            function CicleCalculator() {
+            function meterCalculator() {
                 // αρχικοποιήση των μεταβλητών των πλευρών με τις αντιστοιχές τιμές από τα πεδία εισαγωγής από το χρήστη
                 // αφού μετατρέψω από string μορφή σε int τα δεδομένα.
-                let a = parseFloat( (document.getElementById ('numberPi').value));
-                let b = parseFloat( (document.getElementById ('radius').value));
+                let a = parseFloat( (document.getElementById ('amount').value));
+
                 // έλεγχος αν είναι κένα τα πεδία 
-                CheckNull(b)
+                CheckNull(a)
                 // υπολογισμός της διαμέτρου κύκλου
-                let diameter = 2*b;
-                // υπολογισμός του εμβαδού κύκλου
-                let surface = a * ( Math.pow(b,2));
-                // στρογγυλοποίηση των αποτελεσμάτων
-                if (Number.isNaN(surface) && Number.isNaN(diameter))
+                let selectElement = document.querySelector('#prices');
+                let selectedOption = selectElement.options[selectElement.selectedIndex].value;
+                let final;
+
+                // Επιλέγεται κάθε φόρα ανάλογα την επιλογή στο μενού select ο αντίστοιχος υπολογισμός.
+                switch(selectedOption){
+                    case '0':
+                    document.getElementById ('success').innerHTML = `⚠️Δεν έχετε επιλέξει τίποτα`;
+                    messageAgent(final,a)
+                    break;
+                    case '1':
+                    // Μετατροπή από νανόμετρα σε μέτρα
+                    final = multipleTen(a,-9);
+                    messageAgent(final,a)
+                    break;
+                    case '2':
+                    // Μετατροπή από μικρόμετρα σε μέτρα
+                    final = multipleTen(a,-7);
+                    messageAgent(final,a)
+                    break;
+                    case '3':
+                    // Μετατροπή από χιλιοστά σε μέτρα
+                    final = multipleTen(a,-3);
+                    messageAgent(final,a)
+                    break;
+                    case '4':
+                    // Μετατροπή από εκατοστά σε μέτρα
+                    final = multipleTen(a,-2);
+                    messageAgent(final,a);
+                    case '5':
+                    // Μετατροπή από χιλιόμετρα σε μέτρα
+                    final = multipleTen(a,3);
+                    messageAgent(final,a);
+                    break;
+                    case '6':
+                    // Μετατροπή από ινστες σε μέτρα
+                    final = a * 0.0254
+                    messageAgent(final,a);
+                    break;
+                    case '7':
+                    // Μετατροπή από γιάρδες σε μέτρα
+                    final = a * 0.9144;
+                    messageAgent(final,a);
+                    break;
+                    case '8':
+                    // Μετατροπή από πόδια σε μέτρα
+                    final = a / 0.0022046;
+                    messageAgent(final,a);
+                    break;
+                    // Για οποιάδηποτε άλλη επιλογή θα προβλήθει το παρακάτων μήνυμα λάθους
+                    default:messageAgent(final,a);
+                    document.getElementById ('success').innerHTML = `⚠️Έγινε κάποιο λάθος`;
+                    break;
+                    
+                }
+
+                if (Number.isNaN(final))
                 {
                     document.getElementById ('success').innerHTML = `⚠️Έγινε κάποιο λάθος`;
                     document.getElementById ('error').innerHTML = ` Υποχρεωτικό πεδιο `;
-                    //έπειτα από 3 δευτερόλεπτα, θα κάνω reset αυτόματα σε όλα τα ενδιαφερόμενα πεδία για να ξεκινήσω από την αρχή
-                    setTimeout(resetFunction, 3000);
+                    //έπειτα από κάποια δευτερόλεπτα, θα κάνω reset αυτόματα σε όλα τα ενδιαφερόμενα πεδία για να ξεκινήσω από την αρχή
+                    setTimeout(resetFunction, 2000);
                 }else{
-                    let em = surface.toFixed(2);
-                    let dm = diameter.toFixed(2);
                     // παρουσίαση των απολετεσμάτων στην ιστοσελίδα μας στις αντίστοιχες θέσεις
                     document.getElementById ('success').innerHTML = `👏Συγχαρητήρια`;
-                    document.getElementById ('surface').innerHTML = em;
-                    document.getElementById ('diameter').innerHTML = dm;
-                    //έπειτα από 5 δευτερόλεπτα, θα κάνω reset αυτόματα σε όλα τα ενδιαφερόμενα πεδία για να ξεκινήσω από την αρχή
-                    setTimeout(resetFunction, 5000);
+                    document.getElementById ('result').innerHTML = " <br/> " + final + " μέτρα ";
+                    
+                    //έπειτα από κάποια δευτερόλεπτα, θα κάνω reset αυτόματα σε όλα τα ενδιαφερόμενα πεδία για να ξεκινήσω από την αρχή
+                    setTimeout(resetFunction, 3000);
                 }
                 
                 
               }
 
+              //function με 1 παράμετρο για να ελεχθεί αν είναι ΝaN ή κενό
               function CheckNull(parametros) {
                 if ((parametros == "") || Number.isNaN(parametros)){
                    alert("Παρακαλώ σημπληρώστε όλα τα πεδία");
                    return false;
                 }
               }
-
+              // επαναφέρουμε με αυτήν την function ολές τις σημαντικές τιμές
               const resetFunction = function ClearFields() {
-                document.getElementById ('numberPi').value="3.14159";
-                document.getElementById ('radius').value="";
+                document.getElementById ('amount').value="";
                 document.getElementById ('success').innerHTML ="";
-                document.getElementById ('surface').innerHTML ="";
-                document.getElementById ('diameter').innerHTML ="";
+                document.getElementById ('result').innerHTML ="";
                 document.getElementById ('error').innerHTML = "";
               }
+              
+              // function με 2 παραμέτρους για γρήγορο υπολογισμό
+              function multipleTen(a,b){
+                return a * Math.pow(10,b);
+              }
+
+              //function με 2 παραμέτρους με βασική χρήση εμφανισή τους στην κονσολα του broswer για επαλήθευση αριθμών
+              function messageAgent(a,b){
+                console.log( a + ": " + b )
+              }
+
               
         </script>
 </body>

@@ -48,13 +48,19 @@
                 </div>
                 <div id="solution">
                     <div class="row">
-                        <label class="datalabel" for="numberPi">Σταθερά π:</label>
-                        <input class="datainput" name="numberPi" id="numberPi" disabled autocomplete="off" value="3,14159"/>
+                        <label class="datalabel" for="height">ύψος(cm):</label>
+                        <input type="number" class="datainput" name="height" id="height" placeholder="πληκτρολογήστε εδώ" autocomplete="off" required step="0.01"/>
+                        <span class="notification" id="errorH"></span>
                     </div>
                     <div class="row">
-                        <label class="datalabel" for="radius">Ακτίνα κύκλου (r)</label>
-                        <input class="datainput" id="radius" placeholder="Εισάγετε την ακτινα του κύκλου" autocomplete="off" required/>
-                        <span class="notification" id="error"></span>
+                        <label class="datalabel" for="width">πλάτος (cm): </label>
+                        <input type="number" class="datainput" id="width" placeholder="πληκτρολογήστε εδώ" autocomplete="off" required step="0.01"/>
+                        <span class="notification" id="errorW"></span>
+                    </div>
+                    <div class="row">
+                        <label class="datalabel" for="length">πλάτος (cm): </label>
+                        <input type="number" class="datainput" id="length" placeholder="πληκτρολογήστε εδώ" autocomplete="off" required step="0.01"/>
+                        <span class="notification" id="errorL"></span>
                     </div>
                 <div class="row">
                     <button class="submitBtn" type="submit" onclick="CicleCalculator()">Υπολογισμός</button>
@@ -63,9 +69,7 @@
                     </div>
                     <div id="results">
                         <h4 id="success"></h4>
-                        <p>Εμβαδόν κύκλου (Α):<i id="surface"></i></p>
-                        <p>Διάμετρος κύκλου (d):<i id="diameter"></i></p>
-                        
+                        <p>Όγκος:<i id="surface"></i></p>
                     </div>
                     
                 </div>
@@ -75,28 +79,32 @@
             function CicleCalculator() {
                 // αρχικοποιήση των μεταβλητών των πλευρών με τις αντιστοιχές τιμές από τα πεδία εισαγωγής από το χρήστη
                 // αφού μετατρέψω από string μορφή σε int τα δεδομένα.
-                let a = parseFloat( (document.getElementById ('numberPi').value));
-                let b = parseFloat( (document.getElementById ('radius').value));
+                let h = parseFloat( (document.getElementById ('height').value));
+                let w = parseFloat( (document.getElementById ('width').value));
+                let l = parseFloat( (document.getElementById ('length').value));
                 // έλεγχος αν είναι κένα τα πεδία 
-                CheckNull(b)
-                // υπολογισμός της διαμέτρου κύκλου
-                let diameter = 2*b;
-                // υπολογισμός του εμβαδού κύκλου
-                let surface = a * ( Math.pow(b,2));
+                CheckNull(h);                
+                CheckNull(w);                
+                CheckNull(l);                
+
+                // υπολογισμός της χωρητικότητας
+                let surface = (h * w * l) / 1000;
                 // στρογγυλοποίηση των αποτελεσμάτων
-                if (Number.isNaN(surface) && Number.isNaN(diameter))
+                if (Number.isNaN(surface))
                 {
                     document.getElementById ('success').innerHTML = `⚠️Έγινε κάποιο λάθος`;
                     document.getElementById ('error').innerHTML = ` Υποχρεωτικό πεδιο `;
+                    notifications.forEach(not => 
+                    {
+                            not.textContent = "Υποχρεωτικό πεδιο";
+                    });
                     //έπειτα από 3 δευτερόλεπτα, θα κάνω reset αυτόματα σε όλα τα ενδιαφερόμενα πεδία για να ξεκινήσω από την αρχή
                     setTimeout(resetFunction, 3000);
                 }else{
-                    let em = surface.toFixed(2);
-                    let dm = diameter.toFixed(2);
+                    let su = surface.toFixed(2);
                     // παρουσίαση των απολετεσμάτων στην ιστοσελίδα μας στις αντίστοιχες θέσεις
                     document.getElementById ('success').innerHTML = `👏Συγχαρητήρια`;
-                    document.getElementById ('surface').innerHTML = em;
-                    document.getElementById ('diameter').innerHTML = dm;
+                    document.getElementById ('surface').innerHTML = su + ` <span>λίτρα</span> `;
                     //έπειτα από 5 δευτερόλεπτα, θα κάνω reset αυτόματα σε όλα τα ενδιαφερόμενα πεδία για να ξεκινήσω από την αρχή
                     setTimeout(resetFunction, 5000);
                 }
@@ -112,12 +120,16 @@
               }
 
               const resetFunction = function ClearFields() {
-                document.getElementById ('numberPi').value="3.14159";
-                document.getElementById ('radius').value="";
+                document.getElementById ('height').value="";
+                document.getElementById ('width').value="";
+                document.getElementById ('length').value="";
                 document.getElementById ('success').innerHTML ="";
                 document.getElementById ('surface').innerHTML ="";
-                document.getElementById ('diameter').innerHTML ="";
-                document.getElementById ('error').innerHTML = "";
+                let elements = document.querySelectorAll('.notification');
+                elements.forEach(el => 
+                {
+                        el.textContent = "";
+                });
               }
               
         </script>

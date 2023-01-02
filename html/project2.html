@@ -12,10 +12,16 @@
     <link rel="manifest" href="../site.webmanifest">
     <link rel="stylesheet" href="../css/style.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 
 </head>
 <body>
-    <div id="container">
+    <div class="preloader">
+        <div class="ball"></div>
+        <div class="ball"></div>
+        <div class="ball"></div>
+    </div>
+    <div id="container" class="content">
         <header>
             <nav>
                 <ul>
@@ -165,5 +171,12 @@
     <footer>
         Copyright 2022 &copy; <a href="https://github.com/ssoc2dzafeiris/" alt="My Github" title="Dimitris' github page" target="_blank">ssoc2_dzafeiris</a>
     </footer>
+    <script>
+        $(function() {
+            $(".preloader").fadeOut(2500, function() {
+                $(".content").fadeIn(1000);        
+            });
+        });
+    </script>
 </body>
 </html>

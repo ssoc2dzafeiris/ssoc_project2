@@ -33,6 +33,7 @@
 
 - [Δημήτρίος Ζαφείρης](https://github.com/zafeirisdimi)
 - [ssoc2_dzafeiris](https://github.com/ssoc2_dzafeiris) 
-- Υπό την καθοδήγηση του [Αντώνη Γκοτσίνα](https://github.com/agotsinasInstructor) στα πλαίσια του εκπαιδευτικού προγράμματος ***Start School Of Code - Front End Development***
+- Υπό την καθοδήγηση του [Αντώνη Γκοτσίνα](https://github.com/agotsinasInstructor) στα πλαίσια του εκπαιδευτικού προγράμματος <br/>
+- ***Start School Of Code - Front End Development***
 
 [🔙](#υπολογισμός-εμβαδού-τριγώνου)
